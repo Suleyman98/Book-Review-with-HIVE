@@ -1,4 +1,7 @@
-class BookModel {
+import 'package:equatable/equatable.dart';
+
+// ignore: must_be_immutable
+class BookModel extends Equatable {
   final String? imageUrl;
   final String? title;
   final String? description;
@@ -30,4 +33,8 @@ class BookModel {
         'price': price,
         'rating': rating
       };
+
+  @override
+  List<Object?> get props =>
+      [imageUrl, isFavorite, title, description, price, rating];
 }

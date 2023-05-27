@@ -52,23 +52,31 @@ class BookProvider with ChangeNotifier {
     } else {
       _items = [];
       if (selectedFilters.contains('Cheapest')) {
-        _items
-            .addAll(boxValues.where((element) => element.price! < 11).toList());
+        _items.addAll(boxValues
+            .where(
+                (element) => element.price! < 11 && !_items.contains(element))
+            .toList());
         notifyListeners();
       }
       if (selectedFilters.contains('Most Expensive')) {
-        _items.addAll(
-            boxValues.where((element) => element.price! > 100).toList());
+        _items.addAll(boxValues
+            .where(
+                (element) => element.price! > 100 && !_items.contains(element))
+            .toList());
         notifyListeners();
       }
       if (selectedFilters.contains('Most Rated')) {
-        _items
-            .addAll(boxValues.where((element) => element.rating == 5).toList());
+        _items.addAll(boxValues
+            .where(
+                (element) => element.rating == 5 && !_items.contains(element))
+            .toList());
         notifyListeners();
       }
       if (selectedFilters.contains('Less Rated')) {
-        _items
-            .addAll(boxValues.where((element) => element.rating == 1).toList());
+        _items.addAll(boxValues
+            .where(
+                (element) => element.rating == 1 && !_items.contains(element))
+            .toList());
         notifyListeners();
       }
     }
@@ -99,7 +107,7 @@ class BookProvider with ChangeNotifier {
             .toLowerCase()
             .startsWith(search.text.toString().toLowerCase()))
         .toList();
-
+    //check this part
     notifyListeners();
   }
 
@@ -124,6 +132,7 @@ class BookProvider with ChangeNotifier {
     await book.add(jsonA);
     refresh();
     searchBook(boxValues);
+    filterItems();
   }
 
   void toggleFavorite(BookModel currentModel) async {
@@ -139,6 +148,7 @@ class BookProvider with ChangeNotifier {
     String jsonA = json.encode(newModel.toJson());
     await book.putAt(findIndex(currModel), jsonA);
     refresh();
+    filterItems();
   }
 
   void setRating(double val, BookModel currentModel) async {
@@ -154,6 +164,7 @@ class BookProvider with ChangeNotifier {
     await book.putAt(findIndex(currentModel), jsonA);
     refresh();
     searchBook(boxValues);
+    filterItems();
   }
 
   void undeleteBook(int index, BookModel bookUndelete) async {
@@ -163,6 +174,7 @@ class BookProvider with ChangeNotifier {
     refresh();
     refreshDeleted();
     searchBook(boxValues);
+    filterItems();
   }
 
   void deletePermanently(BuildContext context) async {
@@ -192,6 +204,7 @@ class BookProvider with ChangeNotifier {
     refresh();
     refreshDeleted();
     searchBook(boxValues);
+    filterItems();
   }
 
   void editBook(BookModel currentModel) async {
@@ -207,6 +220,7 @@ class BookProvider with ChangeNotifier {
     await book.putAt(findIndex(currModel), jsonA);
     refresh();
     searchBook(boxValues);
+    filterItems();
   }
 
   void refresh() async {

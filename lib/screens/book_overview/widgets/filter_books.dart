@@ -92,7 +92,9 @@ class _FilterChipWidgetState extends State<FilterChipWidget> {
       label: Text(widget.chipName),
       labelStyle: const TextStyle(
           color: Colors.teal, fontSize: 14.0, fontWeight: FontWeight.bold),
-      selected: _isSelected,
+      selected: provider.selectedFilters.contains(widget.chipName)
+          ? true
+          : _isSelected,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
       ),
