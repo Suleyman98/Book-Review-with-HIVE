@@ -50,7 +50,7 @@ class BookProvider with ChangeNotifier {
     if (selectedFilters.isEmpty) {
       refresh();
     } else {
-      _items = searchedBooks; // check this part
+      _items = []; // check this part
 
       if (selectedFilters.contains('Cheapest')) {
         _items.addAll(boxValues
@@ -81,6 +81,7 @@ class BookProvider with ChangeNotifier {
         notifyListeners();
       }
     }
+    searchBook(_items);
   }
 
   int findIndex(BookModel currentModel) {
@@ -94,6 +95,8 @@ class BookProvider with ChangeNotifier {
 
   void setFavoriteOrAll(bool isFav) {
     isFavorite = isFav;
+    selectedFilters = [];
+    refresh();
     notifyListeners();
   }
 
