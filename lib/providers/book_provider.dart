@@ -50,7 +50,8 @@ class BookProvider with ChangeNotifier {
     if (selectedFilters.isEmpty) {
       refresh();
     } else {
-      _items = [];
+      _items = searchedBooks; // check this part
+
       if (selectedFilters.contains('Cheapest')) {
         _items.addAll(boxValues
             .where(
