@@ -15,7 +15,6 @@ class ProductOverviewScreen extends StatefulWidget {
 }
 
 class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
-  var isFavorite = false;
   @override
   void initState() {
     Provider.of<BookProvider>(context, listen: false).refresh();
@@ -37,7 +36,9 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
             width: 10,
           )
         ],
-        title: const Text('My Books'),
+        title: provider.isFavorite
+            ? const Text('My Favorite Books')
+            : const Text('My Books'),
       ),
       body: GridViewWidget(isFavorite: provider.isFavorite),
       floatingActionButton: CustomFloatingActionButton(provider: provider),

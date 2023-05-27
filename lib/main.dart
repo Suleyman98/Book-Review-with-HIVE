@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_test/providers/book_provider.dart';
 import 'package:hive_test/screens/book_overview/book_overview_screen.dart';
 import 'package:hive_test/screens/deleted_items/deleted_items_screen.dart';
+import 'package:hive_test/screens/splash_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(primarySwatch: Colors.teal),
-        home: const ProductOverviewScreen(),
+        home: const SplashScreen(),
         routes: {
+          '/home': (context) => const ProductOverviewScreen(),
           '/deleted': (context) => const DeleteItems(),
         },
       ),
