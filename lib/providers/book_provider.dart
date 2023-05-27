@@ -96,6 +96,7 @@ class BookProvider with ChangeNotifier {
   void setFavoriteOrAll(bool isFav) {
     isFavorite = isFav;
     selectedFilters = [];
+    search.text = '';
     refresh();
     notifyListeners();
   }
