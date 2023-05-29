@@ -31,8 +31,8 @@ class CustomFilterChip extends StatelessWidget {
             ),
           ),
         ),
-        const Divider(
-          color: Colors.teal,
+        Divider(
+          color: Theme.of(context).dividerColor,
           height: 10.0,
         ),
         Align(

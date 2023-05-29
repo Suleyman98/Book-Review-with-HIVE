@@ -8,6 +8,17 @@ class BookProvider with ChangeNotifier {
   List<BookModel> _deletedItems = [];
   List<BookModel> searchedBooks = [];
   bool _isFiltering = false;
+// -----------------   Global Form Key   ---------------
+  final formKey = GlobalKey<FormState>();
+  // String? validate(value) {
+  //   if (value == null || value == '') {
+  //     return 'Please enter values';
+  //   } else {
+  //     return null;
+  //   }
+  // }
+
+  // -----------------     Global Form Key       ---------------
 
   List<String> selectedFilters = [];
 

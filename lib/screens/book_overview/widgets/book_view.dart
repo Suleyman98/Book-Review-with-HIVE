@@ -16,7 +16,7 @@ class BookView extends StatelessWidget {
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
         footer: GridTileBar(
-          backgroundColor: Colors.black87,
+          backgroundColor: Theme.of(context).highlightColor,
           title: Text(book.title!),
           leading: IconButton(
             onPressed: () {
@@ -31,13 +31,17 @@ class BookView extends StatelessWidget {
               );
             },
             color: Theme.of(context).primaryColor,
-            icon: const Icon(Icons.edit),
+            icon: Icon(
+              Icons.edit,
+              color: Theme.of(context).primaryIconTheme.color,
+            ),
           ),
           trailing: IconButton(
               onPressed: () {
                 provider.deleteBook(book);
               },
-              icon: Icon(Icons.delete, color: Theme.of(context).primaryColor)),
+              icon: Icon(Icons.delete,
+                  color: Theme.of(context).primaryIconTheme.color)),
         ),
         child: GestureDetector(
           child: Image.network(

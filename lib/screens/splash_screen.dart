@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, '/home');
     });
 
     return Scaffold(
@@ -23,7 +23,7 @@ class SplashScreen extends StatelessWidget {
               height: 10,
             ),
             const Text(
-              'STOIC',
+              'StoicView',
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
